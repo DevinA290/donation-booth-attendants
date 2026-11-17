@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14213D">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Shift sign-up and booth instructions for donation booth attendants at the circuit assembly.">
+  <title>Donation Booth Attendants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">Circuit Assembly · Sunday, November 22</p>
+      <h1 class="site-title">Donation Booth Attendants</h1>
+      <nav class="tabs" aria-label="Sections">
+        <a class="tab" href="#shifts" data-tab="shifts">Shifts</a>
+        <a class="tab" href="#instructions" data-tab="instructions">Instructions</a>
+        <a class="tab" href="#questions" data-tab="questions">Questions</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- SHIFTS -->
+    <section class="panel" id="panel-shifts" data-panel="shifts" aria-labelledby="h-shifts">
+      <h2 id="h-shifts" class="section-title">Pick your shift</h2>
+      <p class="section-sub">Two attendants per shift. Type your name, then tap an open spot.</p>
+
+      <div class="card name-card">
+        <label for="name-input" class="field-label">Your name</label>
+        <input id="name-input" class="text-input" type="text" placeholder="First name" maxlength="40" autocomplete="given-name" autocapitalize="words" enterkeyhint="done">
+        <p id="name-error" class="field-error" role="alert" hidden>Type your name first, then tap a spot.</p>
+      </div>
+
+      <p id="spots-left" class="spots-left" aria-live="polite"></p>
+      <p id="shift-notice" class="notice" role="status" hidden></p>
+
+      <div id="shift-list" class="stack" aria-live="polite">
+        <div class="card loading">Loading shifts…</div>
+      </div>
+
+      <p class="footnote">Need to swap? Tap Remove next to a name so someone else can take the spot.</p>
+    </section>
+
+    <!-- INSTRUCTIONS -->
+    <section class="panel" id="panel-instructions" data-panel="instructions" aria-labelledby="h-instructions" hidden>
+      <h2 id="h-instructions" class="section-title">At the booth</h2>
+      <p class="section-sub">The main points from the booth instructions, for while you are on shift.</p>
+
+      <div class="stack">
+        <div class="card card-navy">
+          <p class="card-label">Your role</p>
+          <p class="role-lead">Be friendly and patient. Help people feel comfortable donating online.</p>
+          <p>No one should feel pressured to donate, or to donate online.</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">What you help with</h3>
+          <ol class="num-list">
+            <li>Help people donate online on their own phone.</li>
+            <li>Answer questions about event donations using the Event Donations sheet (A-170o) or donate.jw.org.</li>
+            <li>Hand out a printed copy of that sheet when someone asks for one.</li>
+            <li>Asked “how much should I give?” The amount is a personal decision, and every donation is appreciated. (Luke 21:1-4; 2 Cor. 9:7)</li>
+            <li>For general questions about ways to donate, show them where the answer is on donate.jw.org.</li>
+            <li>Want help later? They can ask a trusted brother or sister in their congregation.</li>
+            <li>Detailed question you cannot answer? Show them Contact Us on donate.jw.org. They type the question in the Comments box and the branch replies.</li>
+          </ol>
+          <div class="link-row" data-links="donate,contact"></div>
+        </div>
+
+        <div class="card card-warn">
+          <h3 class="card-title">Never do these</h3>
+          <ul class="x-list">
+            <li>No cash or checks at the booth. Those go in a contribution box.</li>
+            <li>Do not donate for someone using your phone or your jw.org account.</li>
+            <li>Do not look at their card or any personal details.</li>
+            <li>Do not see, create or type their password.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">If a reporter comes up</h3>
+          <p>Do not give an interview or comments. Send them to the assembly overseer.</p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Before your shift</h3>
+          <ul class="dot-list">
+            <li><strong>donate.jw.org:</strong> walk through a one-time donation and a recurring one. Know the payment options, Online Help, the FAQ, and Contact Us.</li>
+            <li><strong>jw.org account:</strong> know “Create New Account” on the Log In page, and “Trouble Logging In?” for people unsure if they have an account.</li>
+            <li><strong>Event Donations sheet (A-170o):</strong> read the answers so you can find them fast.</li>
+          </ul>
+          <div class="link-row" data-links="help,login"></div>
+        </div>
+
+        <div class="card card-blue">
+          <h3 class="card-title">Tips</h3>
+          <ul class="dot-list">
+            <li>Let them hold their phone. You point, they tap.</li>
+            <li>Step back or look away when they type a password or card number.</li>
+            <li>Keep printed Event Donations sheets within reach.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUESTIONS -->
+    <section class="panel" id="panel-questions" data-panel="questions" aria-labelledby="h-questions" hidden>
+      <h2 id="h-questions" class="section-title">Questions people ask</h2>
+      <p class="section-sub">What came up before, and what to say.</p>
+
+      <div id="question-list" class="stack"></div>
+
+      <div class="card card-blue unsure">
+        <h3 class="q-title">Not sure of the answer?</h3>
+        <p>Do not guess. Show them Contact Us on donate.jw.org so the branch can answer.</p>
+        <div class="link-row" data-links="contact"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
