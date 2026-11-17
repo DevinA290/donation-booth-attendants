@@ -28,7 +28,7 @@ const QUESTIONS = [
   {
     group: "From the instructions",
     q: "“I’m not sure if I have a jw.org account.”",
-    a: "Open the Log In page on jw.org and use “Trouble Logging In?” to check. If they have none, “Create New Account” is on the same page. They type their own password.",
+    a: "Open the Log In page on jw.org and use “Forgot Username?” to check. If they have none, “Create New Account” is on the same page. They type their own password.",
     links: ["login"],
   },
   {
