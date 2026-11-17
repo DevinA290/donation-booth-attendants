@@ -202,7 +202,9 @@ async function fetchRows() {
   return data;
 }
 
-async function refresh() {
+let lastSignature = null;  // what is on screen now, so background refreshes don't redraw for nothing
+
+async function refresh({ force = false } = {}) {
   try {
     rows = await fetchRows();
     loaded = true;
@@ -211,6 +213,11 @@ async function refresh() {
     console.error("Load failed", err);
     if (!loaded) loadFailed = true; // keep showing the last good data if we had some
   }
+  const signature = loadFailed ? "failed" : JSON.stringify(rows.map((r) => [r.id, r.shift_id, r.slot, r.name]));
+  // Redrawing replaces the buttons, which can swallow a tap in progress. Only redraw on a real change.
+  if (!force && signature === lastSignature) return;
+  if (confirming && !rows.some((r) => r.id === confirming)) confirming = null;
+  lastSignature = signature;
   renderShifts();
 }
 
@@ -308,7 +315,7 @@ async function takeSpot(shift, slot) {
     if (error.code === "23505") showNotice("Someone just took that spot.");
     else showNotice("Couldn't save that. Check your connection and try again.");
   }
-  await refresh();
+  await refresh({ force: true });
 }
 
 async function removeSpot(shift, slot, row) {
@@ -322,13 +329,13 @@ async function removeSpot(shift, slot, row) {
     console.error("Delete failed", error);
     showNotice("Couldn't remove that. Check your connection and try again.");
   }
-  await refresh();
+  await refresh({ force: true });
 }
 
 async function retryLoad() {
   $("#shift-list").replaceChildren(el("div", { class: "card loading" }, "Loading shifts…"));
   if (!db) initClient();
-  await refresh();
+  await refresh({ force: true });
 }
 
 function initClient() {
